@@ -4,8 +4,8 @@
       <v-expansion-panel>
         <v-expansion-panel-header class="display-1">
           <v-card-actions>
-            <v-icon class="mr-2" @click="performAction()">
-              mdi-checkbox-blank-circle-outline
+            <v-icon large class="mr-2" @click="performAction()">
+              mdi-check-circle-outline
             </v-icon>
           </v-card-actions>
           Task Name
