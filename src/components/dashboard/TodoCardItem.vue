@@ -4,7 +4,7 @@
       <v-expansion-panel>
         <v-expansion-panel-header class="display-1">
           <v-card-actions>
-            <v-icon @click="performAction()">
+            <v-icon class="mr-2" @click="performAction()">
               mdi-checkbox-blank-circle-outline
             </v-icon>
           </v-card-actions>
@@ -12,17 +12,17 @@
           <v-row class="mx-2 mr-3 my-1" justify="space-between" align="center">
       <div class="hashtags text-center mb-5">
         <v-chip class="ma-1" color="accent" label>
-          <v-icon left> mdi-label </v-icon>
+          <v-icon left small> mdi-label </v-icon>
           Tags
         </v-chip>
 
         <v-chip class="ma-1" color="accent" label>
-          <v-icon left> mdi-label </v-icon>
+          <v-icon left small> mdi-label </v-icon>
           Tags
         </v-chip>
 
         <v-chip class="ma-1" color="accent" label>
-          <v-icon left> mdi-label </v-icon>
+          <v-icon left small> mdi-label </v-icon>
           Tags
         </v-chip>
       </div>
