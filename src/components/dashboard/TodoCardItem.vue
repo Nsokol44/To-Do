@@ -4,8 +4,8 @@
       <v-expansion-panel>
         <v-expansion-panel-header class="display-1">
           <v-card-actions>
-            <v-icon large class="mr-2" @click="performAction()">
-              mdi-check-circle-outline
+            <v-icon large class="mr-2" :color="completedIconColor" @click="completed()">
+              {{ completedIcon }}
             </v-icon>
           </v-card-actions>
           Task Name
@@ -87,30 +87,19 @@ import "@mdi/font/css/materialdesignicons.css";
 
 export default Vue.extend({
   data: () => ({
-    active: false,
-    mainButtonText: "completed",
-    mainButtonColor: "primary",
+    completedIcon: "mdi-check-circle-outline",
+    completedIconColor: "secondary",
 
+    active: false,
     loading: true,
     times: ["5:30PM", "5:45PM", "6:01PM", "8:30PM"],
     selectedTime: "",
   }),
 
   methods: {
-    performAction() {
-      this.mainButtonText = "completed";
-      this.mainButtonColor = "primary";
-    },
-    moveItem() {
-      this.mainButtonText = "moving";
-      this.mainButtonColor = "secondary";
-    },
-    editItem() {
-      this.mainButtonText = "editing";
-      this.mainButtonColor = "accent";
-    },
-    deleteItem() {
-      this.mainButtonText = "deleted";
+    completed() {
+      this.completedIcon = "mdi-check-decagram";
+      this.completedIconColor = "success";
     },
   },
 });
