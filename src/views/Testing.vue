@@ -5,8 +5,8 @@
         <v-spacer />
         <cols cols="12">
           <h1>Test your components here:</h1>
-          <h2>Don't commit this file</h2>
-          <div id="Add-components-below">
+          <p>Don't commit this file</p>
+          <div id="Add-components-below" class="mt-7">
             <TodoCardItem />
             <List />
             <HelloWorld />
@@ -29,7 +29,7 @@ export default {
     TodoCardItem,
     HelloWorld,
   },
-    props:{},
+  props: {},
   data: () => ({}),
 
   methods: () => ({}),
@@ -37,5 +37,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>
