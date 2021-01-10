@@ -4,29 +4,34 @@
       <v-expansion-panel>
         <v-expansion-panel-header class="display-1">
           <v-card-actions>
-            <v-icon large class="mr-2" :color="completedIconColor" @click="completed()">
+            <v-icon
+              large
+              class="mr-2"
+              :color="completedIconColor"
+              @click="completed()"
+            >
               {{ completedIcon }}
             </v-icon>
           </v-card-actions>
           Task Name
           <v-row class="mx-2 mr-3 my-1" justify="space-between" align="center">
-      <div class="hashtags text-center mb-5">
-        <v-chip class="ma-1" color="accent" label>
-          <v-icon left small> mdi-label </v-icon>
-          Tags
-        </v-chip>
+            <div class="hashtags text-center mb-5">
+              <v-chip class="ma-1" color="accent" label>
+                <v-icon left small> mdi-label </v-icon>
+                Tags
+              </v-chip>
 
-        <v-chip class="ma-1" color="accent" label>
-          <v-icon left small> mdi-label </v-icon>
-          Tags
-        </v-chip>
+              <v-chip class="ma-1" color="accent" label>
+                <v-icon left small> mdi-label </v-icon>
+                Tags
+              </v-chip>
 
-        <v-chip class="ma-1" color="accent" label>
-          <v-icon left small> mdi-label </v-icon>
-          Tags
-        </v-chip>
-      </div>
-    </v-row>
+              <v-chip class="ma-1" color="accent" label>
+                <v-icon left small> mdi-label </v-icon>
+                Tags
+              </v-chip>
+            </div>
+          </v-row>
         </v-expansion-panel-header>
         <v-expansion-panel-content>
           <v-list-item three-line>
@@ -50,15 +55,14 @@
             </v-list-item-content>
           </v-list-item>
 
-          <v-row class="mt-0" justify="space-around" align="center">
+          <v-row class="ma-0" justify="space-around" align="center">
             <v-card-actions>
-              <v-btn outlined rounded text class="success"
-                ><v-icon left> mdi-play-circle </v-icon> Start
-              </v-btn>
-            </v-card-actions>
-            <v-card-actions>
-              <v-btn outlined rounded text class="red"
-                ><v-icon left> mdi-stop-circle </v-icon> Stop
+              <v-btn
+                rounded
+                class="success"
+                :color="timerIconColor"
+                @click="toggleTimer()"
+                ><v-icon left> {{ timerIcon }} </v-icon> {{ timerText }}
               </v-btn>
             </v-card-actions>
           </v-row>
@@ -90,6 +94,11 @@ export default Vue.extend({
     completedIcon: "mdi-check-circle-outline",
     completedIconColor: "secondary",
 
+    timerFlag: "false",
+    timerIcon: "mdi-play-circle",
+    timerIconColor: "green",
+    timerText: "Start",
+
     active: false,
     loading: true,
     times: ["5:30PM", "5:45PM", "6:01PM", "8:30PM"],
@@ -100,6 +109,19 @@ export default Vue.extend({
     completed() {
       this.completedIcon = "mdi-check-decagram";
       this.completedIconColor = "success";
+    },
+
+    toggleTimer() {
+      if (this.timerFlag) { //Start Timer, button changes to STOP
+      this.timerIcon = "mdi-stop-circle";
+      this.timerIconColor = "warning";
+      this.timerText = "Stop";
+      } else { //Stop Timer, button changes to START
+      this.timerIcon = "mdi-play-circle";
+      this.timerIconColor = "success";
+      this.timerText = "Start";
+      }
+      this.timerFlag = !this.timerFlag;
     },
   },
 });
