@@ -14,13 +14,13 @@
             </v-icon>
           </v-card-actions>
 
-          Task Name
+          {{todoItem.name}}
 
           <v-row class="mx-2 mr-3 my-1" justify="space-between" align="center">
             <div class="hashtags text-center mb-5">
               <v-chip color="accent" label small>
                 <v-icon left small> mdi-label </v-icon>
-                Tags
+                {{todoItem.hashtags[0]}}
               </v-chip>
 
               <v-chip color="accent" label small>
@@ -80,8 +80,14 @@
 <script lang="ts">
 import Vue from "vue";
 import "@mdi/font/css/materialdesignicons.css";
-
+import {TodoItem} from "@/model/model.ts"
 export default Vue.extend({
+
+  props:{
+    todoItem: {type: Object,
+    required: true}
+  },
+
   data: () => ({
     completedIcon: "mdi-check-circle-outline",
     completedIconColor: "secondary",
