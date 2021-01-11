@@ -1,4 +1,4 @@
-export interface BringItem {
+export interface TodoItem {
     id: string,
     name: string,
     hashtags: string[],
