@@ -13,7 +13,9 @@
               {{ completedIcon }}
             </v-icon>
           </v-card-actions>
+
           Task Name
+
           <v-row class="mx-2 mr-3 my-1" justify="space-between" align="center">
             <div class="hashtags text-center mb-5">
               <v-chip color="accent" label small>
@@ -33,6 +35,7 @@
             </div>
           </v-row>
         </v-expansion-panel-header>
+
         <v-expansion-panel-content>
           <v-list-item three-line>
             <v-list-item-content>
@@ -82,9 +85,6 @@
   </v-card>
 </template>
 
-
-
-
 <script lang="ts">
 import Vue from "vue";
 import "@mdi/font/css/materialdesignicons.css";
@@ -98,11 +98,6 @@ export default Vue.extend({
     timerIcon: "mdi-play-circle",
     timerIconColor: "green",
     timerText: "Start",
-
-    active: false,
-    loading: true,
-    times: ["5:30PM", "5:45PM", "6:01PM", "8:30PM"],
-    selectedTime: "",
   }),
 
   methods: {
@@ -112,14 +107,16 @@ export default Vue.extend({
     },
 
     toggleTimer() {
-      if (this.timerFlag) { //Start Timer, button changes to STOP
-      this.timerIcon = "mdi-stop-circle";
-      this.timerIconColor = "warning";
-      this.timerText = "Stop";
-      } else { //Stop Timer, button changes to START
-      this.timerIcon = "mdi-play-circle";
-      this.timerIconColor = "success";
-      this.timerText = "Start";
+      if (this.timerFlag) {
+        //Start Timer, button changes to STOP
+        this.timerIcon = "mdi-stop-circle";
+        this.timerIconColor = "warning";
+        this.timerText = "Stop";
+      } else {
+        //Stop Timer, button changes to START
+        this.timerIcon = "mdi-play-circle";
+        this.timerIconColor = "success";
+        this.timerText = "Start";
       }
       this.timerFlag = !this.timerFlag;
     },
