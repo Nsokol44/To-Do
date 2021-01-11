@@ -19,7 +19,7 @@
           <v-row>
             <v-tooltip right>
               <template v-slot:activator="{ on, attrs }">
-                <v-btn color="primary" dark v-bind="attrs" v-on="on">
+                <v-btn color="primary" dark v-bind="attrs" v-on="on" small>
                   Hashtags
                 </v-btn>
               </template>
