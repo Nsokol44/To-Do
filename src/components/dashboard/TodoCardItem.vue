@@ -24,17 +24,17 @@
                 </v-btn>
               </template>
               <div class="text-center">
-                <v-chip color="accent" label small>
+                <v-chip class="mx-1" color="accent" label small>
                   <v-icon left small> mdi-label </v-icon>
                   {{ todoItem.hashtags[0] }}
                 </v-chip>
 
-                <v-chip color="accent" label small>
+                <v-chip class="mx-1" color="accent" label small>
                   <v-icon left small> mdi-label </v-icon>
                   Tags
                 </v-chip>
 
-                <v-chip color="accent" label small>
+                <v-chip class="mx-1" color="accent" label small>
                   <v-icon left small> mdi-label </v-icon>
                   Tags
                 </v-chip>
