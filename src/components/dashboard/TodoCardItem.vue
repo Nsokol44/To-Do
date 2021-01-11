@@ -37,19 +37,14 @@
         </v-expansion-panel-header>
 
         <v-expansion-panel-content>
-          <v-list-item three-line>
+          <v-list-item>
             <v-list-item-content>
               <v-row class="ma-1">
-                <v-list-item-subtitle>
+                <p>
                   Task Description Aliquam sed lacus vitae nisl semper hendrerit
                   eu in metus. Donec luctus mauris at ligula luctus, at sodales
-                  libero pellentesque. Donec augue urna, pretium in dignissim
-                  nec, venenatis eget purus. Pellentesque tristique, eros nec
-                  dignissim aliquam, eros eros consequat diam, a tincidunt urna
-                  magna in ipsum. Duis vitae porta sapien. Sed maximus interdum
-                  purus efficitur consectetur. Nulla mattis fermentum odio sit
-                  amet pellentesque. Cras porta eget purus nec tincidunt.
-                </v-list-item-subtitle>
+                  libero pellentesque.
+                </p>
 
                 <v-list-item-title class="title my-2 d"
                   >Due in: (timeLeft)</v-list-item-title
@@ -71,10 +66,7 @@
           </v-row>
 
           <v-chip
-            class="ml-1 secondary"
-            :input-value="active"
-            filter
-            filter-icon="mdi-pencil"
+            class="secondary"
             @click="editItem()"
           >
             Edit
@@ -125,7 +117,4 @@ export default Vue.extend({
 </script>
 
 <style scoped>
-.hashtags {
-  max-width: 250px;
-}
 </style>
