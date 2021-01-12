@@ -21,7 +21,7 @@
           flat
           :background-color="fieldBG"
           v-model="todoItem.name"
-          :readonly="readonly"
+          :readonly="fieldReadonly"
         ></v-text-field>
       </v-col>
     </v-row>
@@ -39,7 +39,7 @@
             </v-col>
 
             <v-col>
-              <v-tooltip v-model="show">
+              <v-tooltip v-model="showHashtags">
                 <div v-for="tag in todoItem.hashtags" :key="tag">
                   <v-chip class="mx-1" color="accent" label small>
                     {{ tag }}
@@ -63,7 +63,7 @@
                 row-height="1"
                 :background-color="fieldBG"
                 :value="todoItem.description"
-                :readonly="readonly"
+                :readonly="fieldReadonly"
               ></v-textarea>
             </v-col>
           </v-row>
@@ -111,8 +111,8 @@ export default Vue.extend({
     timerIcon: "mdi-play-circle",
     timerIconColor: "success",
     timerText: "Start",
-    show: false,
-    readonly: true,
+    showHashtags: false,
+    fieldReadonly: true,
     editBtnText: "Edit",
     fieldBG: "white",
     panelReadonly: true,
@@ -148,18 +148,18 @@ export default Vue.extend({
     },
 
     toggleEditing() {
-      if (this.readonly) {
+      if (this.fieldReadonly) {
         this.editBtnText = "Finish";
         this.fieldBG = "pink lighten-5";
       } else {
         this.editBtnText = "Edit";
         this.fieldBG = "white";
       }
-      this.readonly = !this.readonly;
+      this.fieldReadonly = !this.fieldReadonly;
     },
 
     openHash() {
-      this.show = !this.show;
+      this.showHashtags = !this.showHashtags;
       if (!this.panelReadonly) {
         this.panelReadonly = true;
       }
