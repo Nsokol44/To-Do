@@ -91,7 +91,7 @@ export default Vue.extend({
     completedIcon: "mdi-check-circle-outline",
     completedIconColor: "secondary",
 
-    timerFlag: "false",
+    timerFlag: false,
     timerIcon: "mdi-play-circle",
     timerIconColor: "success",
     timerText: "Start",
