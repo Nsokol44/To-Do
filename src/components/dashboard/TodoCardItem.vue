@@ -40,23 +40,18 @@
 
         <!-- Panel Contents -->
         <v-expansion-panel-content>
-          <v-list-item>
-            <v-list-item-content>
-              <v-row class="ma-1">
-                <p>
-                  Task Description Aliquam sed lacus vitae nisl semper hendrerit
-                  eu in metus. Donec luctus mauris at ligula luctus, at sodales
-                  libero pellentesque.
-                </p>
-              </v-row>
-            </v-list-item-content>
-          </v-list-item>
+          <!-- Task Description -->
+          <v-row class="ma-0">
+            <p>
+              Task Description Aliquam sed lacus vitae nisl semper hendrerit eu
+              in metus. Donec luctus mauris at ligula luctus, at sodales libero
+              pellentesque.
+            </p>
+          </v-row>
 
           <!-- Due Date -->
           <v-row justify="center">
-            <v-card-title class="title"
-              >Due in: (timeLeft)</v-card-title
-            >
+            <v-card-title class="title">Due in: (timeLeft)</v-card-title>
           </v-row>
 
           <!-- Timer Button -->
