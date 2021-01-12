@@ -16,21 +16,9 @@
 
           {{todoItem.name}}
 
-          <v-row class="mx-2 mr-3 my-1" justify="space-between" align="center">
-            <div class="hashtags text-center mb-5">
-              <v-chip color="accent" label small>
-                {{todoItem.hashtags[0]}}
-              </v-chip>
-
-              <v-chip color="accent" label small>
-                Tags
-              </v-chip>
-
-              <v-chip color="accent" label small>
-                Tags
-              </v-chip>
-            </div>
-          </v-row>
+          <div v-for="tag in todoItem.hashtags" :key="tag">
+            <v-chip class="mx-1" color="accent" label small> {{ tag }} </v-chip>
+          </div>
         </v-expansion-panel-header>
 
         <v-expansion-panel-content>
