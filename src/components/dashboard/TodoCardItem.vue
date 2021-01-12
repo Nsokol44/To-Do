@@ -48,14 +48,16 @@
                   eu in metus. Donec luctus mauris at ligula luctus, at sodales
                   libero pellentesque.
                 </p>
-
-                <!-- Due Date -->
-                <v-list-item-title class="title my-2 d"
-                  >Due in: (timeLeft)</v-list-item-title
-                >
               </v-row>
             </v-list-item-content>
           </v-list-item>
+
+          <!-- Due Date -->
+          <v-row justify="center">
+            <v-card-title class="title"
+              >Due in: (timeLeft)</v-card-title
+            >
+          </v-row>
 
           <!-- Timer Button -->
           <v-row class="ma-0" justify="space-around" align="center">
