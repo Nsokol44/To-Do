@@ -12,7 +12,10 @@
           {{ completedIcon }}
         </v-icon>
       </v-card-actions>
-      <v-card-title class="display-1"> {{ todoItem.name }} </v-card-title>
+      <!-- <v-card-title class="display-1"> {{ todoItem.name }} </v-card-title> -->
+      <v-col cols="9">
+        <v-text-field v-model="todoItem.name" :disabled="disabled"></v-text-field>
+      </v-col>
     </v-row>
 
     <!-- Hashtags & Expansion for additional information -->
@@ -87,6 +90,7 @@ export default Vue.extend({
     timerIconColor: "success",
     timerText: "Start",
     show: false,
+    disabled: true,
   }),
 
   methods: {
