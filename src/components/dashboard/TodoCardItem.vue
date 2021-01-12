@@ -115,7 +115,7 @@ export default Vue.extend({
     fieldReadonly: true,
     editBtnText: "Edit",
     fieldBG: "white",
-    panelReadonly: true,
+    panelReadonly: false,
   }),
 
   methods: {
