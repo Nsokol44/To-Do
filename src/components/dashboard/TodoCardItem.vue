@@ -32,7 +32,6 @@
         <v-expansion-panel-header>
           <v-row justify="center">
             <v-col>
-              <!-- <v-btn color="primary" @click="show = !show" small> -->
               <v-btn color="primary" @click="openHash()" small>
                 Hashtags
               </v-btn>
@@ -41,7 +40,7 @@
             <v-col>
               <v-tooltip v-model="showHashtags">
                 <div v-for="tag in todoItem.hashtags" :key="tag">
-                  <v-chip class="mx-1" color="accent" label small>
+                  <v-chip class="ma-1" color="accent" label small>
                     {{ tag }}
                   </v-chip>
                 </div>
