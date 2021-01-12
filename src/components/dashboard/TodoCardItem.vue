@@ -1,5 +1,5 @@
 <template>
-  <v-card class="card mx-auto my-1 cardItem" max-width="422" outlined>
+  <v-card class="card mx-auto my-1" max-width="422" outlined>
     <v-expansion-panels>
       <v-expansion-panel class="cardItem">
         <v-expansion-panel-header class="display-1">
@@ -122,7 +122,4 @@ export default Vue.extend({
 </script>
 
 <style scoped>
-  .cardItem {
-    border-radius: 50px;
-  }
 </style>
