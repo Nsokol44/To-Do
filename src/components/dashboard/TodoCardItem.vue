@@ -1,21 +1,23 @@
 <template>
   <v-card class="card mx-auto my-1" max-width="422" outlined>
+    <v-row> <!-- TodoCard -->
+      <v-card-actions>
+        <v-icon
+          large
+          class="ma-6"
+          :color="completedIconColor"
+          @click="toggleCompleted()"
+        >
+          {{ completedIcon }}
+        </v-icon>
+      </v-card-actions>
+      <v-card-title class="display-1"> {{ todoItem.name }} </v-card-title>
+    </v-row>
+
+    
     <v-expansion-panels>
       <v-expansion-panel class="cardItem">
         <v-expansion-panel-header class="display-1">
-          <v-card-actions>
-            <v-icon
-              large
-              class="mr-2"
-              :color="completedIconColor"
-              @click="toggleCompleted()"
-            >
-              {{ completedIcon }}
-            </v-icon>
-          </v-card-actions>
-
-          {{todoItem.name}}
-
           <div v-for="tag in todoItem.hashtags" :key="tag">
             <v-chip class="mx-1" color="accent" label small> {{ tag }} </v-chip>
           </div>
@@ -40,21 +42,13 @@
 
           <v-row class="ma-0" justify="space-around" align="center">
             <v-card-actions>
-              <v-btn
-                rounded
-                :color="timerIconColor"
-                @click="toggleTimer()"
+              <v-btn rounded :color="timerIconColor" @click="toggleTimer()"
                 ><v-icon left> {{ timerIcon }} </v-icon> {{ timerText }}
               </v-btn>
             </v-card-actions>
           </v-row>
 
-          <v-chip
-            class="secondary"
-            @click="editItem()"
-          >
-            Edit
-          </v-chip>
+          <v-chip class="secondary" @click="editItem()"> Edit </v-chip>
         </v-expansion-panel-content>
       </v-expansion-panel>
     </v-expansion-panels>
@@ -64,12 +58,10 @@
 <script lang="ts">
 import Vue from "vue";
 import "@mdi/font/css/materialdesignicons.css";
-import {TodoItem} from "@/model/model.ts"
+import { TodoItem } from "@/model/model.ts";
 export default Vue.extend({
-
-  props:{
-    todoItem: {type: Object,
-    required: true}
+  props: {
+    todoItem: { type: Object, required: true },
   },
 
   data: () => ({
@@ -84,17 +76,19 @@ export default Vue.extend({
 
   methods: {
     toggleCompleted() {
-      if (!this.completedFlag) { //Check as completed
+      if (!this.completedFlag) {
+        //Check as completed
         this.completedIcon = "mdi-check-decagram";
         this.completedIconColor = "success";
-      } else { //Uncheck for not completed
+      } else {
+        //Uncheck for not completed
         this.completedIcon = "mdi-check-circle-outline";
         this.completedIconColor = "secondary";
       }
       this.completedFlag = !this.completedFlag;
     },
 
-    toggleTimer() { 
+    toggleTimer() {
       if (this.timerFlag) {
         //Start Timer, button changes to STOP
         this.timerIcon = "mdi-stop-circle";
