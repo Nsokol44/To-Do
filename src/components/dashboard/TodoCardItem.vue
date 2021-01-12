@@ -1,20 +1,24 @@
 <template>
   <v-card class="card mx-auto my-1" outlined>
-    <v-row class="my-1">
+    <v-row class="my-0" align-content="center">
       <!-- TodoCard -->
+      <v-col cols="2">
       <v-card-actions>
         <v-icon
           large
-          class="ml-6"
+          class="ml-3"
           :color="completedIconColor"
           @click="toggleCompleted()"
         >
           {{ completedIcon }}
         </v-icon>
       </v-card-actions>
-      <!-- <v-card-title class="display-1"> {{ todoItem.name }} </v-card-title> -->
+      </v-col>
       <v-col cols="9">
         <v-text-field
+        class="mt-1"
+          solo
+          flat
           v-model="todoItem.name"
           :disabled="editDisabled"
         ></v-text-field>
@@ -49,7 +53,15 @@
           <!-- Task Description -->
           <v-row class="ma-0">
             <v-col cols="12">
-              <v-textarea name="input-7-1" label="Description" auto-grow row-height="1" :value="todoItem.description" :disabled="editDisabled"></v-textarea>
+              <v-textarea
+                name="input-7-1"
+                solo
+                flat
+                auto-grow
+                row-height="1"
+                :value="todoItem.description"
+                :disabled="editDisabled"
+              ></v-textarea>
             </v-col>
           </v-row>
 
@@ -70,7 +82,9 @@
           </v-row>
 
           <!-- Edit Button -->
-          <v-chip class="secondary" @click="toggleEditing()"> {{ editBtnText }} </v-chip>
+          <v-chip class="secondary" @click="toggleEditing()">
+            {{ editBtnText }}
+          </v-chip>
         </v-expansion-panel-content>
       </v-expansion-panel>
     </v-expansion-panels>
@@ -129,10 +143,12 @@ export default Vue.extend({
     },
 
     toggleEditing() {
-      this.editDisabled ? this.editBtnText = "Finish" : this.editBtnText = "Edit"
+      this.editDisabled
+        ? (this.editBtnText = "Finish")
+        : (this.editBtnText = "Edit");
       this.editDisabled = !this.editDisabled;
     },
-  }
+  },
 });
 </script>
 
