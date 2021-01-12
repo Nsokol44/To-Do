@@ -14,32 +14,25 @@
             </v-icon>
           </v-card-actions>
 
-          {{ todoItem.name }}
+          {{todoItem.name}}
 
-          <v-row>
-            <v-tooltip right>
-              <template v-slot:activator="{ on, attrs }">
-                <v-btn color="primary" dark v-bind="attrs" v-on="on" small>
-                  Hashtags
-                </v-btn>
-              </template>
-              <div class="text-center">
-                <v-chip class="mx-1" color="accent" label small>
-                  <v-icon left small> mdi-label </v-icon>
-                  {{ todoItem.hashtags[0] }}
-                </v-chip>
+          <v-row class="mx-2 mr-3 my-1" justify="space-between" align="center">
+            <div class="hashtags text-center mb-5">
+              <v-chip color="accent" label small>
+                <v-icon left small> mdi-label </v-icon>
+                {{todoItem.hashtags[0]}}
+              </v-chip>
 
-                <v-chip class="mx-1" color="accent" label small>
-                  <v-icon left small> mdi-label </v-icon>
-                  Tags
-                </v-chip>
+              <v-chip color="accent" label small>
+                <v-icon left small> mdi-label </v-icon>
+                Tags
+              </v-chip>
 
-                <v-chip class="mx-1" color="accent" label small>
-                  <v-icon left small> mdi-label </v-icon>
-                  Tags
-                </v-chip>
-              </div>
-            </v-tooltip>
+              <v-chip color="accent" label small>
+                <v-icon left small> mdi-label </v-icon>
+                Tags
+              </v-chip>
+            </div>
           </v-row>
         </v-expansion-panel-header>
 
@@ -64,7 +57,6 @@
             <v-card-actions>
               <v-btn
                 rounded
-                class="success"
                 :color="timerIconColor"
                 @click="toggleTimer()"
                 ><v-icon left> {{ timerIcon }} </v-icon> {{ timerText }}
@@ -72,7 +64,12 @@
             </v-card-actions>
           </v-row>
 
-          <v-chip class="secondary" @click="editItem()"> Edit </v-chip>
+          <v-chip
+            class="secondary"
+            @click="editItem()"
+          >
+            Edit
+          </v-chip>
         </v-expansion-panel-content>
       </v-expansion-panel>
     </v-expansion-panels>
@@ -82,10 +79,12 @@
 <script lang="ts">
 import Vue from "vue";
 import "@mdi/font/css/materialdesignicons.css";
-import { TodoItem } from "@/model/model.ts";
+import {TodoItem} from "@/model/model.ts"
 export default Vue.extend({
-  props: {
-    todoItem: { type: Object, required: true },
+
+  props:{
+    todoItem: {type: Object,
+    required: true}
   },
 
   data: () => ({
@@ -94,7 +93,7 @@ export default Vue.extend({
 
     timerFlag: "false",
     timerIcon: "mdi-play-circle",
-    timerIconColor: "green",
+    timerIconColor: "success",
     timerText: "Start",
   }),
 
@@ -108,7 +107,7 @@ export default Vue.extend({
       if (this.timerFlag) {
         //Start Timer, button changes to STOP
         this.timerIcon = "mdi-stop-circle";
-        this.timerIconColor = "warning";
+        this.timerIconColor = "error";
         this.timerText = "Stop";
       } else {
         //Stop Timer, button changes to START
@@ -123,7 +122,7 @@ export default Vue.extend({
 </script>
 
 <style scoped>
-.cardItem {
-  border-radius: 50px;
-}
+  .cardItem {
+    border-radius: 50px;
+  }
 </style>
