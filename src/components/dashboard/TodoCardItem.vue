@@ -21,7 +21,9 @@
         <v-expansion-panel-header>
           <v-row justify="center">
             <v-col>
-              <v-btn color="primary" @click="show = !show" small> Hashtags </v-btn>
+              <v-btn color="primary" @click="show = !show" small>
+                Hashtags
+              </v-btn>
             </v-col>
 
             <v-col>
@@ -36,6 +38,7 @@
           </v-row>
         </v-expansion-panel-header>
 
+        <!-- Panel Contents -->
         <v-expansion-panel-content>
           <v-list-item>
             <v-list-item-content>
@@ -46,6 +49,7 @@
                   libero pellentesque.
                 </p>
 
+                <!-- Due Date -->
                 <v-list-item-title class="title my-2 d"
                   >Due in: (timeLeft)</v-list-item-title
                 >
@@ -53,6 +57,7 @@
             </v-list-item-content>
           </v-list-item>
 
+          <!-- Timer Button -->
           <v-row class="ma-0" justify="space-around" align="center">
             <v-card-actions>
               <v-btn rounded :color="timerIconColor" @click="toggleTimer()"
@@ -61,6 +66,7 @@
             </v-card-actions>
           </v-row>
 
+          <!-- Edit Button -->
           <v-chip class="secondary" @click="editItem()"> Edit </v-chip>
         </v-expansion-panel-content>
       </v-expansion-panel>
@@ -121,7 +127,7 @@ export default Vue.extend({
 </script>
 
 <style scoped>
-  .card {
-    width: 420px;
-  }
+.card {
+  width: 420px;
+}
 </style>
