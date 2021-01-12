@@ -8,7 +8,7 @@
               large
               class="mr-2"
               :color="completedIconColor"
-              @click="completed()"
+              @click="toggleCompleted()"
             >
               {{ completedIcon }}
             </v-icon>
@@ -88,9 +88,9 @@ export default Vue.extend({
   },
 
   data: () => ({
+    completedFlag: false,
     completedIcon: "mdi-check-circle-outline",
     completedIconColor: "secondary",
-
     timerFlag: false,
     timerIcon: "mdi-play-circle",
     timerIconColor: "success",
@@ -98,12 +98,18 @@ export default Vue.extend({
   }),
 
   methods: {
-    completed() {
-      this.completedIcon = "mdi-check-decagram";
-      this.completedIconColor = "success";
+    toggleCompleted() {
+      if (!this.completedFlag) { //Check as completed
+        this.completedIcon = "mdi-check-decagram";
+        this.completedIconColor = "success";
+      } else { //Uncheck for not completed
+        this.completedIcon = "mdi-check-circle-outline";
+        this.completedIconColor = "secondary";
+      }
+      this.completedFlag = !this.completedFlag;
     },
 
-    toggleTimer() {
+    toggleTimer() { 
       if (this.timerFlag) {
         //Start Timer, button changes to STOP
         this.timerIcon = "mdi-stop-circle";
