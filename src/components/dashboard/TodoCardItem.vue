@@ -48,9 +48,9 @@
         <v-expansion-panel-content>
           <!-- Task Description -->
           <v-row class="ma-0">
-            <p>
-              {{ todoItem.description }}
-            </p>
+            <v-col cols="12">
+              <v-textarea name="input-7-1" label="Description" auto-grow row-height="1" :value="todoItem.description" :disabled="editDisabled"></v-textarea>
+            </v-col>
           </v-row>
 
           <!-- Due Date -->
