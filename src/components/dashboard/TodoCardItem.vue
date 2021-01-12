@@ -1,76 +1,68 @@
 <template>
-  <v-card class="card mx-auto my-1 cardItem" max-width="422" outlined>
+  <v-card class="card mx-auto my-1" outlined>
+    <v-row class="my-1">
+      <!-- TodoCard -->
+      <v-card-actions>
+        <v-icon
+          large
+          class="ml-6"
+          :color="completedIconColor"
+          @click="toggleCompleted()"
+        >
+          {{ completedIcon }}
+        </v-icon>
+      </v-card-actions>
+      <v-card-title class="display-1"> {{ todoItem.name }} </v-card-title>
+    </v-row>
+
+    <!-- Hashtags & Expansion for additional information -->
     <v-expansion-panels>
-      <v-expansion-panel class="cardItem">
-        <v-expansion-panel-header class="display-1">
-          <v-card-actions>
-            <v-icon
-              large
-              class="mr-2"
-              :color="completedIconColor"
-              @click="completed()"
-            >
-              {{ completedIcon }}
-            </v-icon>
-          </v-card-actions>
+      <v-expansion-panel>
+        <v-expansion-panel-header>
+          <v-row justify="center">
+            <v-col>
+              <v-btn color="primary" @click="show = !show" small>
+                Hashtags
+              </v-btn>
+            </v-col>
 
-          {{todoItem.name}}
-
-          <v-row class="mx-2 mr-3 my-1" justify="space-between" align="center">
-            <div class="hashtags text-center mb-5">
-              <v-chip color="accent" label small>
-                <v-icon left small> mdi-label </v-icon>
-                {{todoItem.hashtags[0]}}
-              </v-chip>
-
-              <v-chip color="accent" label small>
-                <v-icon left small> mdi-label </v-icon>
-                Tags
-              </v-chip>
-
-              <v-chip color="accent" label small>
-                <v-icon left small> mdi-label </v-icon>
-                Tags
-              </v-chip>
-            </div>
+            <v-col>
+              <v-tooltip v-model="show">
+                <div v-for="tag in todoItem.hashtags" :key="tag">
+                  <v-chip class="mx-1" color="accent" label small>
+                    {{ tag }}
+                  </v-chip>
+                </div>
+              </v-tooltip>
+            </v-col>
           </v-row>
         </v-expansion-panel-header>
 
+        <!-- Panel Contents -->
         <v-expansion-panel-content>
-          <v-list-item>
-            <v-list-item-content>
-              <v-row class="ma-1">
-                <p>
-                  Task Description Aliquam sed lacus vitae nisl semper hendrerit
-                  eu in metus. Donec luctus mauris at ligula luctus, at sodales
-                  libero pellentesque.
-                </p>
+          <!-- Task Description -->
+          <v-row class="ma-0">
+            <p>
+              {{ todoItem.description }}
+            </p>
+          </v-row>
 
-                <v-list-item-title class="title my-2 d"
-                  >Due in: (timeLeft)</v-list-item-title
-                >
-              </v-row>
-            </v-list-item-content>
-          </v-list-item>
+          <!-- Due Date -->
+          <v-row justify="center">
+            <v-card-title class="subtitle-1">Due: {{ todoItem.dueDate }}</v-card-title>
+          </v-row>
 
+          <!-- Timer Button -->
           <v-row class="ma-0" justify="space-around" align="center">
             <v-card-actions>
-              <v-btn
-                rounded
-                class="success"
-                :color="timerIconColor"
-                @click="toggleTimer()"
+              <v-btn rounded :color="timerIconColor" @click="toggleTimer()"
                 ><v-icon left> {{ timerIcon }} </v-icon> {{ timerText }}
               </v-btn>
             </v-card-actions>
           </v-row>
 
-          <v-chip
-            class="secondary"
-            @click="editItem()"
-          >
-            Edit
-          </v-chip>
+          <!-- Edit Button -->
+          <v-chip class="secondary" @click="editItem()"> Edit </v-chip>
         </v-expansion-panel-content>
       </v-expansion-panel>
     </v-expansion-panels>
@@ -80,35 +72,42 @@
 <script lang="ts">
 import Vue from "vue";
 import "@mdi/font/css/materialdesignicons.css";
-import {TodoItem} from "@/model/model.ts"
+import { TodoItem } from "@/model/model.ts";
 export default Vue.extend({
-
-  props:{
-    todoItem: {type: Object,
-    required: true}
+  props: {
+    todoItem: { type: Object, required: true },
   },
 
   data: () => ({
+    completedFlag: false,
     completedIcon: "mdi-check-circle-outline",
     completedIconColor: "secondary",
-
-    timerFlag: "false",
+    timerFlag: false,
     timerIcon: "mdi-play-circle",
-    timerIconColor: "green",
+    timerIconColor: "success",
     timerText: "Start",
+    show: false,
   }),
 
   methods: {
-    completed() {
-      this.completedIcon = "mdi-check-decagram";
-      this.completedIconColor = "success";
+    toggleCompleted() {
+      if (!this.completedFlag) {
+        //Check as completed
+        this.completedIcon = "mdi-check-decagram";
+        this.completedIconColor = "success";
+      } else {
+        //Uncheck for not completed
+        this.completedIcon = "mdi-check-circle-outline";
+        this.completedIconColor = "secondary";
+      }
+      this.completedFlag = !this.completedFlag;
     },
 
     toggleTimer() {
-      if (this.timerFlag) {
+      if (!this.timerFlag) {
         //Start Timer, button changes to STOP
         this.timerIcon = "mdi-stop-circle";
-        this.timerIconColor = "warning";
+        this.timerIconColor = "error";
         this.timerText = "Stop";
       } else {
         //Stop Timer, button changes to START
@@ -123,7 +122,7 @@ export default Vue.extend({
 </script>
 
 <style scoped>
-  .cardItem {
-    border-radius: 50px;
-  }
+.card {
+  width: 420px;
+}
 </style>
