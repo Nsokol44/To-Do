@@ -28,11 +28,12 @@
 
     <!-- Hashtags & Expansion for additional information -->
     <v-expansion-panels>
-      <v-expansion-panel>
+      <v-expansion-panel :readonly="panelReadonly" @click="openPanel()">
         <v-expansion-panel-header>
           <v-row justify="center">
             <v-col>
-              <v-btn color="primary" @click="show = !show" small>
+              <!-- <v-btn color="primary" @click="show = !show" small> -->
+              <v-btn color="primary" @click="openHash()" small>
                 Hashtags
               </v-btn>
             </v-col>
@@ -114,6 +115,7 @@ export default Vue.extend({
     readonly: true,
     editBtnText: "Edit",
     fieldBG: "white",
+    panelReadonly: true,
   }),
 
   methods: {
@@ -154,6 +156,17 @@ export default Vue.extend({
         this.fieldBG = "white";
       }
       this.readonly = !this.readonly;
+    },
+
+    openHash() {
+      this.show = !this.show;
+      if (!this.panelReadonly) {
+        this.panelReadonly = true;
+      }
+    },
+
+    openPanel() {
+      this.panelReadonly = false;
     },
   },
 });
