@@ -19,17 +19,14 @@
           <v-row class="mx-2 mr-3 my-1" justify="space-between" align="center">
             <div class="hashtags text-center mb-5">
               <v-chip color="accent" label small>
-                <v-icon left small> mdi-label </v-icon>
                 {{todoItem.hashtags[0]}}
               </v-chip>
 
               <v-chip color="accent" label small>
-                <v-icon left small> mdi-label </v-icon>
                 Tags
               </v-chip>
 
               <v-chip color="accent" label small>
-                <v-icon left small> mdi-label </v-icon>
                 Tags
               </v-chip>
             </div>
