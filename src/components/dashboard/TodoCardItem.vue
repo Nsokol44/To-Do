@@ -3,25 +3,25 @@
     <v-row class="my-0" align-content="center">
       <!-- TodoCard -->
       <v-col cols="2">
-      <v-card-actions>
-        <v-icon
-          large
-          class="ml-3"
-          :color="completedIconColor"
-          @click="toggleCompleted()"
-        >
-          {{ completedIcon }}
-        </v-icon>
-      </v-card-actions>
+        <v-card-actions>
+          <v-icon
+            large
+            class="ml-3"
+            :color="completedIconColor"
+            @click="toggleCompleted()"
+          >
+            {{ completedIcon }}
+          </v-icon>
+        </v-card-actions>
       </v-col>
       <v-col cols="9">
         <v-text-field
-        class="mt-1"
+          class="mt-1"
           solo
           flat
           :background-color="fieldBG"
           v-model="todoItem.name"
-          :disabled="editDisabled"
+          :readonly="readonly"
         ></v-text-field>
       </v-col>
     </v-row>
@@ -62,7 +62,7 @@
                 row-height="1"
                 :background-color="fieldBG"
                 :value="todoItem.description"
-                :disabled="editDisabled"
+                :readonly="readonly"
               ></v-textarea>
             </v-col>
           </v-row>
@@ -111,7 +111,7 @@ export default Vue.extend({
     timerIconColor: "success",
     timerText: "Start",
     show: false,
-    editDisabled: true,
+    readonly: true,
     editBtnText: "Edit",
     fieldBG: "white",
   }),
@@ -146,14 +146,14 @@ export default Vue.extend({
     },
 
     toggleEditing() {
-      if (this.editDisabled) {
+      if (this.readonly) {
         this.editBtnText = "Finish";
-        this.fieldBG="pink lighten-5";
+        this.fieldBG = "pink lighten-5";
       } else {
         this.editBtnText = "Edit";
-        this.fieldBG="white";
+        this.fieldBG = "white";
       }
-      this.editDisabled = !this.editDisabled;
+      this.readonly = !this.readonly;
     },
   },
 });
