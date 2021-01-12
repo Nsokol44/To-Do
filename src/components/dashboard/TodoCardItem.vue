@@ -1,6 +1,7 @@
 <template>
   <v-card class="card mx-auto my-1" max-width="422" outlined>
-    <v-row> <!-- TodoCard -->
+    <v-row>
+      <!-- TodoCard -->
       <v-card-actions>
         <v-icon
           large
@@ -14,13 +15,25 @@
       <v-card-title class="display-1"> {{ todoItem.name }} </v-card-title>
     </v-row>
 
-    
+    <!-- Hashtags & Expansion for additional information -->
     <v-expansion-panels>
-      <v-expansion-panel class="cardItem">
-        <v-expansion-panel-header class="display-1">
-          <div v-for="tag in todoItem.hashtags" :key="tag">
-            <v-chip class="mx-1" color="accent" label small> {{ tag }} </v-chip>
-          </div>
+      <v-expansion-panel>
+        <v-expansion-panel-header>
+          <v-row justify="center">
+            <v-col>
+              <v-btn color="primary" @click="show = !show"> Hashtags </v-btn>
+            </v-col>
+
+            <v-col>
+              <v-tooltip v-model="show">
+                <div v-for="tag in todoItem.hashtags" :key="tag">
+                  <v-chip class="mx-1" color="accent" label small>
+                    {{ tag }}
+                  </v-chip>
+                </div>
+              </v-tooltip>
+            </v-col>
+          </v-row>
         </v-expansion-panel-header>
 
         <v-expansion-panel-content>
@@ -72,6 +85,7 @@ export default Vue.extend({
     timerIcon: "mdi-play-circle",
     timerIconColor: "success",
     timerText: "Start",
+    show: false,
   }),
 
   methods: {
