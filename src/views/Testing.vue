@@ -8,6 +8,7 @@
           <p>Don't commit this file</p>
           <div id="Add-components-below" class="mt-7">
             <TodoCardItem />
+            <AddButton />
             <List />
             <HelloWorld />
           </div>
@@ -27,14 +28,13 @@ export default {
   components: {
     List,
     TodoCardItem,
-    HelloWorld,
+    HelloWorld
   },
   props: {},
   data: () => ({}),
 
-  methods: () => ({}),
+  methods: () => ({})
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

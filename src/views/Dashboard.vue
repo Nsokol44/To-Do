@@ -21,11 +21,11 @@ export default {
   name: "Home",
   components: {
     List,
-    OverviewList,
+    OverviewList
   },
-  props:{},
+  props: {},
   data: () => ({}),
 
-  methods: () => ({}),
+  methods: () => ({})
 };
 </script>

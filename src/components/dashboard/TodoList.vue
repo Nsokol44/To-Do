@@ -6,11 +6,13 @@
           <v-title class="title">To Do List</v-title>
           <v-list-item-group v-model="selectedItem" color="primary">
             <v-list-item v-for="item in todoList" :key="item">
-         
-              <TodoCardItem :todoItem="item"/>
+              <TodoCardItem :todoItem="item" />
             </v-list-item>
           </v-list-item-group>
         </v-list>
+        <v-btn rounded color="yellow" @click="addItem()">
+          Add To-Do
+        </v-btn>
       </v-col>
     </v-row>
   </v-container>
@@ -23,18 +25,17 @@ import { mapGetters } from "vuex";
 export default Vue.extend({
   name: "HelloWorld",
   components: {
-    TodoCardItem,
+    TodoCardItem
   },
- computed: {
+  computed: {
     // map `this.todoList` to `this.$store.getters.todoItems`
     ...mapGetters({
       todoList: "userData/todoItems"
     })
   },
-  data: () => ({}),
+  data: () => ({})
 });
 </script>
-
 
 <style scoped>
 .title {

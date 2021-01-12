@@ -10,12 +10,7 @@
           <v-list-item-subtitle>
             Task Description Aliquam sed lacus vitae nisl semper hendrerit eu in
             metus. Donec luctus mauris at ligula luctus, at sodales libero
-            pellentesque. Donec augue urna, pretium in dignissim nec, venenatis
-            eget purus. Pellentesque tristique, eros nec dignissim aliquam, eros
-            eros consequat diam, a tincidunt urna magna in ipsum. Duis vitae
-            porta sapien. Sed maximus interdum purus efficitur consectetur.
-            Nulla mattis fermentum odio sit amet pellentesque. Cras porta eget
-            purus nec tincidunt.
+            pellentesque.
           </v-list-item-subtitle>
 
           <v-list-item-title class="title my-2 d"
@@ -26,51 +21,53 @@
     </v-list-item>
 
     <v-row class="mx-2 mr-3 my-1" justify="space-between" align="center">
-        <div class="hashtags text-center mb-5">
-            <v-chip class="ma-1" color="accent" label>
-                <v-icon left> mdi-label </v-icon>
-                Tags
-            </v-chip>
+      <div class="hashtags text-center mb-5">
+        <v-chip class="ma-1" color="accent" label>
+          <v-icon left> mdi-label </v-icon>
+          Tags
+        </v-chip>
 
-            <v-chip class="ma-1" color="accent" label>
-                <v-icon left> mdi-account-circle-outline </v-icon>
-                John Leider
-            </v-chip>
+        <v-chip class="ma-1" color="accent" label>
+          <v-icon left> mdi-account-circle-outline </v-icon>
+          John Leider
+        </v-chip>
 
-            <v-chip class="ma-1" color="accent" label>
-                <v-icon left> mdi-twitter </v-icon>
-                New Tweets
-            </v-chip>
-        </div>    
+        <v-chip class="ma-1" color="accent" label>
+          <v-icon left> mdi-twitter </v-icon>
+          New Tweets
+        </v-chip>
+      </div>
 
-
-        <v-card-actions>
+      <v-card-actions>
         <v-btn rounded :color="mainButtonColor" @click="performAction()">
-            {{ mainButtonText }}
+          {{ mainButtonText }}
         </v-btn>
-        </v-card-actions>
+      </v-card-actions>
     </v-row>
 
     <v-expansion-panels>
       <v-expansion-panel>
         <v-expansion-panel-header> Time Keeping </v-expansion-panel-header>
         <v-expansion-panel-content>
-            <v-row>
-                <v-card-title>Total Time Spent: <br/> (timeSpent)</v-card-title>
-            </v-row>
+          <v-row>
+            <v-card-title
+              >Total Time Spent: <br />
+              (timeSpent)</v-card-title
+            >
+          </v-row>
 
-            <v-row class="mt-0" justify="space-around" align="center">
-                <v-card-actions>
-                <v-btn outlined rounded text class="success"
-                    ><v-icon left> mdi-play-circle </v-icon> Start
-                </v-btn>
-                </v-card-actions>
-                <v-card-actions>
-                <v-btn outlined rounded text class="red"
-                    ><v-icon left> mdi-stop-circle </v-icon> Stop
-                </v-btn>
-                </v-card-actions>
-            </v-row>
+          <v-row class="mt-0" justify="space-around" align="center">
+            <v-card-actions>
+              <v-btn outlined rounded text class="success"
+                ><v-icon left> mdi-play-circle </v-icon> Start
+              </v-btn>
+            </v-card-actions>
+            <v-card-actions>
+              <v-btn outlined rounded text class="red"
+                ><v-icon left> mdi-stop-circle </v-icon> Stop
+              </v-btn>
+            </v-card-actions>
+          </v-row>
         </v-expansion-panel-content>
       </v-expansion-panel>
       <v-expansion-panel>
@@ -110,11 +107,10 @@
         </v-expansion-panel-content>
       </v-expansion-panel>
     </v-expansion-panels>
+    <v-btn>
+
   </v-card>
 </template>
-
-
-
 
 <script lang="ts">
 import Vue from "vue";
@@ -128,7 +124,7 @@ export default Vue.extend({
 
     loading: true,
     times: ["5:30PM", "5:45PM", "6:01PM", "8:30PM"],
-    selectedTime: "",
+    selectedTime: ""
   }),
 
   methods: {
@@ -147,12 +143,15 @@ export default Vue.extend({
     deleteItem() {
       this.mainButtonText = "deleted";
     },
-  },
+    addItem() {
+      this.mainButtonText = "add";
+    }
+  }
 });
 </script>
 
 <style scoped>
-    .hashtags {
-        max-width: 250px;
-    }
+.hashtags {
+  max-width: 250px;
+}
 </style>

@@ -6,7 +6,6 @@
           <v-title class="title">Overview List List</v-title>
           <v-list-item-group v-model="selectedItem" color="primary">
             <v-list-item>
-              
               <OverviewListItem name="Completed" />
             </v-list-item>
             <v-list-item>
@@ -29,13 +28,12 @@ import OverviewListItem from "./OverviewListItem.vue";
 export default Vue.extend({
   name: "HelloWorld",
   components: {
-    OverviewListItem,
+    OverviewListItem
   },
 
-  data: () => ({}),
+  data: () => ({})
 });
 </script>
-
 
 <style scoped>
 .title {
