@@ -14,7 +14,10 @@
       </v-card-actions>
       <!-- <v-card-title class="display-1"> {{ todoItem.name }} </v-card-title> -->
       <v-col cols="9">
-        <v-text-field v-model="todoItem.name" :disabled="disabled"></v-text-field>
+        <v-text-field
+          v-model="todoItem.name"
+          :disabled="editDisabled"
+        ></v-text-field>
       </v-col>
     </v-row>
 
@@ -52,7 +55,9 @@
 
           <!-- Due Date -->
           <v-row justify="center">
-            <v-card-title class="subtitle-1">Due: {{ todoItem.dueDate }}</v-card-title>
+            <v-card-title class="subtitle-1"
+              >Due: {{ todoItem.dueDate }}</v-card-title
+            >
           </v-row>
 
           <!-- Timer Button -->
@@ -65,7 +70,7 @@
           </v-row>
 
           <!-- Edit Button -->
-          <v-chip class="secondary" @click="editItem()"> Edit </v-chip>
+          <v-chip class="secondary" @click="toggleEditing()"> {{ editBtnText }} </v-chip>
         </v-expansion-panel-content>
       </v-expansion-panel>
     </v-expansion-panels>
@@ -90,7 +95,8 @@ export default Vue.extend({
     timerIconColor: "success",
     timerText: "Start",
     show: false,
-    disabled: true,
+    editDisabled: true,
+    editBtnText: "Edit",
   }),
 
   methods: {
@@ -121,7 +127,12 @@ export default Vue.extend({
       }
       this.timerFlag = !this.timerFlag;
     },
-  },
+
+    toggleEditing() {
+      this.editDisabled ? this.editBtnText = "Finish" : this.editBtnText = "Edit"
+      this.editDisabled = !this.editDisabled;
+    },
+  }
 });
 </script>
 
