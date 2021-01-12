@@ -19,6 +19,7 @@
         class="mt-1"
           solo
           flat
+          :background-color="fieldBG"
           v-model="todoItem.name"
           :disabled="editDisabled"
         ></v-text-field>
@@ -59,6 +60,7 @@
                 flat
                 auto-grow
                 row-height="1"
+                :background-color="fieldBG"
                 :value="todoItem.description"
                 :disabled="editDisabled"
               ></v-textarea>
@@ -111,6 +113,7 @@ export default Vue.extend({
     show: false,
     editDisabled: true,
     editBtnText: "Edit",
+    fieldBG: "white",
   }),
 
   methods: {
@@ -143,9 +146,13 @@ export default Vue.extend({
     },
 
     toggleEditing() {
-      this.editDisabled
-        ? (this.editBtnText = "Finish")
-        : (this.editBtnText = "Edit");
+      if (this.editDisabled) {
+        this.editBtnText = "Finish";
+        this.fieldBG="pink lighten-5";
+      } else {
+        this.editBtnText = "Edit";
+        this.fieldBG="white";
+      }
       this.editDisabled = !this.editDisabled;
     },
   },
