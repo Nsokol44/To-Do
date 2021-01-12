@@ -1,11 +1,11 @@
 <template>
   <v-card class="card mx-auto my-1" outlined>
-    <v-row>
+    <v-row class="my-1">
       <!-- TodoCard -->
       <v-card-actions>
         <v-icon
           large
-          class="ma-6"
+          class="ml-6"
           :color="completedIconColor"
           @click="toggleCompleted()"
         >
@@ -104,7 +104,7 @@ export default Vue.extend({
     },
 
     toggleTimer() {
-      if (this.timerFlag) {
+      if (!this.timerFlag) {
         //Start Timer, button changes to STOP
         this.timerIcon = "mdi-stop-circle";
         this.timerIconColor = "error";
