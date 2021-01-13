@@ -40,7 +40,13 @@
             <v-col>
               <v-tooltip v-model="showHashtags">
                 <div v-for="tag in todoItem.hashtags" :key="tag">
-                  <v-chip class="ma-1" color="accent" label small>
+                  <v-chip
+                    class="ma-1"
+                    color="accent"
+                    label
+                    small
+                    :close="closeHashtag"
+                  >
                     {{ tag }}
                   </v-chip>
                 </div>
@@ -115,6 +121,7 @@ export default Vue.extend({
     editBtnText: "Edit",
     fieldBG: "white",
     panelReadonly: false,
+    closeHashtag: false,
   }),
 
   methods: {
@@ -148,11 +155,15 @@ export default Vue.extend({
 
     toggleEditing() {
       if (this.fieldReadonly) {
+        //Open for Editing
         this.editBtnText = "Finish";
         this.fieldBG = "pink lighten-5";
+        this.closeHashtag = true;
       } else {
+        //Closed for Edit
         this.editBtnText = "Edit";
         this.fieldBG = "white";
+        this.closeHashtag = false;
       }
       this.fieldReadonly = !this.fieldReadonly;
     },
