@@ -1,17 +1,52 @@
 <template>
   <form>
-      <label for="new-todo-input">
-        What needs to be done?
-      </label>
+      <br>
       <input
         type="text"
         id="new-todo-input"
-        name="new-todo"
+        name="new-todo-name"
         autocomplete="off"
+        placeholder="Name of Task"
       />
-      <button type="submit">
+      <br>
+      <input
+      type="text"
+      id="new-todo-input"
+      name="new-todo-description"
+      autocomplete="off"
+      placeholder="Description"
+      />
+      <br>
+      <br>
+      <p> Due Date: </p>
+      <input
+      type="date"
+      id="new-todo-date"
+      autocomplete="off"
+      placeholder="Due Date"
+      />
+      <br>
+      <br>
+      <p> Time Due: </p>
+      <input
+      type="time"
+      id="new-todo-time"
+      autocomplete="off"
+      placeholder="Time Due"
+      />
+      <br>
+      <br>
+      <input
+      type="input"
+      id="new-todo-input"
+      autocomplete="off"
+      placeholder="Hashtags"
+      />
+      <br>
+      <br>
+      <v-btn rounded class="success" type="submit">
         Add
-      </button>
+      </v-btn>
     </form>
 </template>
 
