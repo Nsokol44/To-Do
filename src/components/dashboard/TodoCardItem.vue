@@ -16,7 +16,7 @@
       </v-col>
       <v-col cols="9">
         <v-text-field
-          class="mt-1"
+          class="mt-3"
           solo
           flat
           :background-color="fieldBG"
