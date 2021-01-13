@@ -3,7 +3,7 @@
     <v-row class="my-0" align-content="center">
       <!-- TodoCard -->
       <v-col cols="2">
-        <v-card-actions>
+        <v-card-text>
           <v-icon
             large
             class="ml-3"
@@ -12,7 +12,7 @@
           >
             {{ completedIcon }}
           </v-icon>
-        </v-card-actions>
+        </v-card-text>
       </v-col>
       <v-col cols="9">
         <v-text-field
