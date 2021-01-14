@@ -1,48 +1,57 @@
 <template>
   <form>
       <br>
-      <input
+      <v-text-field dense solo
         type="text"
         id="new-todo-input"
         name="new-todo-name"
         autocomplete="off"
         placeholder="Name of Task"
-      />
-      <br>
-      <input
+        hint="Type the name of your task here."
+      ></v-text-field>
+
+      <v-text-field dense solo
       type="text"
       id="new-todo-input"
       name="new-todo-description"
       autocomplete="off"
       placeholder="Description"
-      />
-      <br>
+      hint="Type what you need to do to complete your task here."
+      ></v-text-field>
       <br>
       <p> Due Date: </p>
-      <input
-      type="date"
-      id="new-todo-date"
-      autocomplete="off"
-      placeholder="Due Date"
-      />
+      <v-date-picker
+      v-model="date"
+      :allowed-dates="allowedDates"
+      class="mt-4"
+      min="2021-01-01"
+      max="2021-12-31"
+    ></v-date-picker>
       <br>
       <br>
-      <p> Time Due: </p>
-      <input
-      type="time"
-      id="new-todo-time"
-      autocomplete="off"
-      placeholder="Time Due"
-      />
-      <br>
-      <br>
-      <input
-      type="input"
-      id="new-todo-input"
-      autocomplete="off"
-      placeholder="Hashtags"
-      />
-      <br>
+      <v-combobox
+    v-model="chips"
+    :items="items"
+    chips
+    clearable
+    label="Your favorite hobbies"
+    multiple
+    prepend-icon="mdi-filter-variant"
+    solo
+  >
+  <template v-slot:selection="{ attrs, item, select, selected }">
+      <v-chip
+        v-bind="attrs"
+        :input-value="selected"
+        close
+        @click="select"
+        @click:close="remove(item)"
+      >
+        <strong>{{ times }}</strong>&nbsp;
+      </v-chip>
+    </template>
+</v-combobox>
+
       <br>
       <v-btn rounded class="success" type="submit">
         Add
@@ -50,6 +59,14 @@
     </form>
 </template>
 
-<script>
-  export default {};
+<script lang="ts">
+export default {
+    data: () => ({
+      date: '2021-01-01',
+    }),
+
+    methods: {
+
+    },
+  }
 </script>

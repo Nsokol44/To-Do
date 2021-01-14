@@ -12,13 +12,13 @@
         </v-list>
 
 
-        <v-card class="card mx-auto my-1 cardItem elevation=4" max-width="422" outlined color="#dbe2ef">
-          <v-card-title> Got More To Do? </v-card-title>
+        <v-card class="card mx-auto my-1 cardItem elevation=4" max-width="422" outlined color="#ee44aa">
+          <v-card-title color="#fff!important"> Got More To Do? </v-card-title>
           <v-card-actions>
             <v-btn
             text
             rounded
-            color="teal accent-4"
+            color="#fff!important"
             @click="reveal = true"
             >
             Add Another Item
