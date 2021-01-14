@@ -44,9 +44,9 @@ export default Vue.extend({
   name: "HelloWorld",
 
   data: () => ({
-    show: false,
+    show: false
   }),
 
-  methods: () => ({}),
+  methods: () => ({})
 });
 </script>

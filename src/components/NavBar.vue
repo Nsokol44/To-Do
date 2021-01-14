@@ -21,14 +21,8 @@ import Vue from "vue";
 export default Vue.extend({
   name: "NavBar",
 
-  data: () => ({
+  data: () => ({}),
 
-
-  }),
-
-  methods: () => ({
-
-
-  }),
+  methods: () => ({})
 });
 </script>

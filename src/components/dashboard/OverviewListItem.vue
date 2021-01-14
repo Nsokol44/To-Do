@@ -14,13 +14,12 @@ export default Vue.extend({
   name: "OverviewListItem",
   components: {},
   props: {
-    name: String,
+    name: String
   },
 
-  data: () => ({}),
+  data: () => ({})
 });
 </script>
-
 
 <style scoped>
 .title {
