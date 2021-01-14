@@ -47,7 +47,7 @@
         @click="select"
         @click:close="remove(item)"
       >
-        <strong>{{ times }}</strong>&nbsp;
+        <strong>{{ item }}</strong>&nbsp;
       </v-chip>
     </template>
 </v-combobox>
