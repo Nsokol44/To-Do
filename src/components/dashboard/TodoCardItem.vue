@@ -1,35 +1,52 @@
 <template>
   <v-card class="card mx-auto my-1" outlined>
-    <v-row class="my-1">
+    <v-row class="my-0" align-content="center">
       <!-- TodoCard -->
-      <v-card-actions>
-        <v-icon
-          large
-          class="ml-6"
-          :color="completedIconColor"
-          @click="toggleCompleted()"
-        >
-          {{ completedIcon }}
-        </v-icon>
-      </v-card-actions>
-      <v-card-title class="display-1"> {{ todoItem.name }} </v-card-title>
+      <v-col cols="2">
+        <v-card-text>
+          <v-icon
+            large
+            class="ml-3"
+            :color="completedIconColor"
+            @click="toggleCompleted()"
+          >
+            {{ completedIcon }}
+          </v-icon>
+        </v-card-text>
+      </v-col>
+      <v-col cols="9">
+        <v-text-field
+          class="mt-3"
+          solo
+          flat
+          :background-color="fieldBG"
+          v-model="todoItem.name"
+          :readonly="fieldReadonly"
+        ></v-text-field>
+      </v-col>
     </v-row>
 
     <!-- Hashtags & Expansion for additional information -->
     <v-expansion-panels>
-      <v-expansion-panel>
+      <v-expansion-panel :readonly="panelReadonly" @click="openPanel()">
         <v-expansion-panel-header>
           <v-row justify="center">
             <v-col>
-              <v-btn color="primary" @click="show = !show" small>
+              <v-btn color="primary" @click="openHash()" small>
                 Hashtags
               </v-btn>
             </v-col>
 
             <v-col>
-              <v-tooltip v-model="show">
+              <v-tooltip v-model="showHashtags">
                 <div v-for="tag in todoItem.hashtags" :key="tag">
-                  <v-chip class="mx-1" color="accent" label small>
+                  <v-chip
+                    class="ma-1"
+                    color="accent"
+                    label
+                    small
+                    :close="closeHashtag"
+                  >
                     {{ tag }}
                   </v-chip>
                 </div>
@@ -42,14 +59,25 @@
         <v-expansion-panel-content>
           <!-- Task Description -->
           <v-row class="ma-0">
-            <p>
-              {{ todoItem.description }}
-            </p>
+            <v-col cols="12">
+              <v-textarea
+                name="input-7-1"
+                solo
+                flat
+                auto-grow
+                row-height="1"
+                :background-color="fieldBG"
+                :value="todoItem.description"
+                :readonly="fieldReadonly"
+              ></v-textarea>
+            </v-col>
           </v-row>
 
           <!-- Due Date -->
           <v-row justify="center">
-            <v-card-title class="subtitle-1">Due: {{ todoItem.dueDate }}</v-card-title>
+            <v-card-title class="subtitle-1"
+              >Due: {{ todoItem.dueDate }}</v-card-title
+            >
           </v-row>
 
           <!-- Timer Button -->
@@ -62,7 +90,9 @@
           </v-row>
 
           <!-- Edit Button -->
-          <v-chip class="secondary" @click="editItem()"> Edit </v-chip>
+          <v-chip class="secondary" @click="toggleEditing()">
+            {{ editBtnText }}
+          </v-chip>
         </v-expansion-panel-content>
       </v-expansion-panel>
     </v-expansion-panels>
@@ -86,7 +116,12 @@ export default Vue.extend({
     timerIcon: "mdi-play-circle",
     timerIconColor: "success",
     timerText: "Start",
-    show: false,
+    showHashtags: false,
+    fieldReadonly: true,
+    editBtnText: "Edit",
+    fieldBG: "white",
+    panelReadonly: false,
+    closeHashtag: false,
   }),
 
   methods: {
@@ -116,6 +151,32 @@ export default Vue.extend({
         this.timerText = "Start";
       }
       this.timerFlag = !this.timerFlag;
+    },
+
+    toggleEditing() {
+      if (this.fieldReadonly) {
+        //Open for Editing
+        this.editBtnText = "Finish";
+        this.fieldBG = "pink lighten-5";
+        this.closeHashtag = true;
+      } else {
+        //Closed for Edit
+        this.editBtnText = "Edit";
+        this.fieldBG = "white";
+        this.closeHashtag = false;
+      }
+      this.fieldReadonly = !this.fieldReadonly;
+    },
+
+    openHash() {
+      this.showHashtags = !this.showHashtags;
+      if (!this.panelReadonly) {
+        this.panelReadonly = true;
+      }
+    },
+
+    openPanel() {
+      this.panelReadonly = false;
     },
   },
 });
